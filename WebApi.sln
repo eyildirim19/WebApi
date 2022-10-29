@@ -5,11 +5,17 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi.Giris", "WebApi.Giris", "{0EDB9FEC-0B41-41E0-BD31-BACFBD49FD07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Giris", "WebApi.Giris\WebApi.Giris.csproj", "{AC873FC0-FB12-4F1D-A8C2-F6B36E88A055}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Giris", "WebApi.Giris\WebApi.Giris.csproj", "{AC873FC0-FB12-4F1D-A8C2-F6B36E88A055}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi.Ornek", "WebApi.Ornek", "{953F6AA7-3C1D-4B44-8D17-55BABBF23413}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Ornek", "WebApi.Ornek\WebApi.Ornek.csproj", "{A2905EDB-8C3D-4057-A841-2D41788D9218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Ornek", "WebApi.Ornek\WebApi.Ornek.csproj", "{A2905EDB-8C3D-4057-A841-2D41788D9218}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi.Ornek2", "WebApi.Ornek2", "{F71F6D5E-3013-4950-BCDB-3AC1689FF081}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Ornek2", "WebApi.Ornek2\WebApi.Ornek2.csproj", "{368C29A2-BF1D-4D6E-B20C-FC491A1D70B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Client", "WebApi.Client\WebApi.Client.csproj", "{6C23092F-A367-453A-80F4-DCD0BE319978}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +31,14 @@ Global
 		{A2905EDB-8C3D-4057-A841-2D41788D9218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2905EDB-8C3D-4057-A841-2D41788D9218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2905EDB-8C3D-4057-A841-2D41788D9218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{368C29A2-BF1D-4D6E-B20C-FC491A1D70B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{368C29A2-BF1D-4D6E-B20C-FC491A1D70B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{368C29A2-BF1D-4D6E-B20C-FC491A1D70B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{368C29A2-BF1D-4D6E-B20C-FC491A1D70B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C23092F-A367-453A-80F4-DCD0BE319978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C23092F-A367-453A-80F4-DCD0BE319978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C23092F-A367-453A-80F4-DCD0BE319978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C23092F-A367-453A-80F4-DCD0BE319978}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +46,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AC873FC0-FB12-4F1D-A8C2-F6B36E88A055} = {0EDB9FEC-0B41-41E0-BD31-BACFBD49FD07}
 		{A2905EDB-8C3D-4057-A841-2D41788D9218} = {953F6AA7-3C1D-4B44-8D17-55BABBF23413}
+		{368C29A2-BF1D-4D6E-B20C-FC491A1D70B8} = {F71F6D5E-3013-4950-BCDB-3AC1689FF081}
+		{6C23092F-A367-453A-80F4-DCD0BE319978} = {F71F6D5E-3013-4950-BCDB-3AC1689FF081}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84CD8E7B-F01A-49EF-8018-E77D5853902D}

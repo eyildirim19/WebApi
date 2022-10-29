@@ -1,0 +1,167 @@
+﻿
+
+
+<div class="row">
+
+	<div class="col-lg-6">
+		<div id="result"></div>
+	</div>
+	<div class="col-lg-6">
+
+		<table class="table table-bordered">
+			<tr>
+				<td colspan="2">Kategori Detayı</td>
+			</tr>
+			<tr>
+				<td style="width:155px">Kategori ID</td>
+				<td id="KatId"></td>
+			</tr>
+			<tr>
+				<td>Kategori Adı</td>
+				<td id="KatAdi"></td>
+			</tr>
+			<tr>
+				<td>Kategori Açıklama</td>
+				<td id="KatAciklama"></td>
+			</tr>
+		</table>
+		<br />
+
+		<table class="table table-bordered">
+			<tr>
+				<td colspan="2">Kategori Ekle</td>
+			</tr>
+			<tr>
+				<td>Kategori Adı</td>
+				<td>
+					<input id="txtKatAdi" placeholder="Kategori Adı" class="form-control form-control-sm" />
+				</td>
+			</tr>
+			<tr>
+				<td>Kategori Açıklama</td>
+				<td id="KatAciklama">
+					<textarea id="txtAciklama" placeholder="Açıklama" rows="4" class="form-control form-control-sm"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="button" value="Ekle" class="btn btn-primary" id="btnEkle" onclick="OnAdd()" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="kayitResult" class="alert">
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+
+@section myscript{
+
+	<script>
+
+		var _url = "http://localhost:5062/Categories/";
+
+		// sayfa yüklendiğinde döküman hazırlandığında
+		//$(document).ready(OnList());
+
+		$(document).ready(function() {
+			OnList();
+		});
+
+
+
+		function OnList() {
+			$.ajax({
+				url: _url,
+				type: "GET",
+				success: function(r) {
+
+					//console.log(r);
+					var data = r;// json datayı alıyoruz...
+
+					//for (var i = 0; i < data.length; i++) {
+					//                   console.log(data[i].name);
+					//}
+					//console.log("*****");
+
+
+					// dizide ki itemlara erişmek için kullanılır.
+
+					var html = "<ul class='list-item-group'>";
+					$.each(r, function(index, item) {
+						console.log(item.name);
+						html += "<li class='list-group-item' style='cursor:pointer' onclick='OnGet(" + item.id + ")'>" + item.name + "</li>";
+					});
+					html += "</ul>";
+
+					$("#result").html(html);
+				}
+			});
+		}
+
+		function OnGet(id) {
+
+			var url = _url + id;
+
+			// ajax metodu yerine get metodu ile'de kayıtları çağrılabilirsiniz. ajax metodu tavsiye edilir...
+			$.get(url, function(r) {
+				$("#KatId").html(r.id);
+				$("#KatAdi").html(r.name);
+				$("#KatAciklama").html(r.desc);
+			});
+
+		}
+
+		function OnAdd() {
+
+
+			// json objeyi hazırla
+
+			var katAdi = $("#txtKatAdi").val().trim(), desc = $("#txtAciklama").val().trim();
+
+			if (katAdi.length == 0)
+				katAdi = null;
+
+			if (desc.length == 0)
+				desc = null;
+
+			var obj = {
+				name: katAdi,
+				desc: desc
+			};
+
+			console.log(obj);
+			$.ajax({
+				url: _url,
+				type: "POST",
+				data: JSON.stringify(obj), // parametre olarak gönder...
+				contentType: "application/json",
+				success: function(r) {
+					
+					$("#kayitResult")
+					.removeClass()
+					.addClass("alert")
+					.addClass("alert-success")
+					.html("İşlem Başarılı");
+				},
+				error: function(jqXHR, textStatus, errorThrown) {
+                    $("#kayitResult")
+                        .removeClass()
+                        .addClass("alert")
+                        .addClass("alert-danger")
+                        .html(jqXHR.responseText);
+				},
+				complete: function(result) {
+					console.log("bitti");
+					console.log(result);
+				}
+			});
+		}
+
+	</script>
+}
