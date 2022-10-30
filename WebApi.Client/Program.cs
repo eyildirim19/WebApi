@@ -5,9 +5,11 @@ namespace WebApi.Client
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddJsonOptions(c =>
+            {
+                c.JsonSerializerOptions.PropertyNamingPolicy = null;
+            });
 
             var app = builder.Build();
 

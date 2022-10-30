@@ -1,0 +1,107 @@
+﻿@model List<CategoryVM>
+
+<div class="row">
+
+	<div class="col-lg-6">
+		<div id="result">
+			<ul class="list-item-group">
+				@foreach (var item in Model)
+				{
+					<li class="list-group-item" style="cursor:pointer;" onclick="OnDetail('@item.Id')"> @item.Name </li>
+				}
+			</ul>
+		</div>
+	</div>
+	<div class="col-lg-6">
+
+		<table class="table table-bordered">
+			<tr>
+				<td colspan="2">Kategori Detayı</td>
+			</tr>
+			<tr>
+				<td style="width:155px">Kategori ID</td>
+				<td id="KatId"></td>
+			</tr>
+			<tr>
+				<td>Kategori Adı</td>
+				<td id="KatAdi"></td>
+			</tr>
+			<tr>
+				<td>Kategori Açıklama</td>
+				<td id="KatAciklama"></td>
+			</tr>
+		</table>
+		<br />
+
+		<form asp-action="AddCategory" asp-controller="Home" method="post" data-ajax="true" data-ajax-success="OnResult">
+		<table class="table table-bordered">
+			<tr>
+				<td colspan="2">Kategori Ekle</td>
+			</tr>
+			<tr>
+				<td>Kategori Adı</td>
+				<td>
+					<input name="Name" id="txtKatAdi" placeholder="Kategori Adı" class="form-control form-control-sm" />
+				</td>
+			</tr>
+			<tr>
+				<td>Kategori Açıklama</td>
+				<td id="KatAciklama">
+					<textarea name="Desc" id="txtAciklama" placeholder="Açıklama" rows="4" class="form-control form-control-sm"></textarea>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<input type="submit" value="Ekle" class="btn btn-primary" id="btnEkle" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<div id="kayitResult" class="alert">
+					</div>
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
+</div>
+
+
+
+@section myscript{
+
+	<script src="~/lib/jquery-ajax/jquery.unobtrusive-ajax.min.js"></script>
+
+	<script>
+
+
+		function OnDetail(id) {
+
+            var vurl = "@Url.Action("Home","CategoriesDetay",new{ id= "catid"})";
+			// /Home/CategoriesDetay/id=catid
+            console.log(vurl);
+			vurl = vurl.replace("catid",id);
+			// /Home/CategoriesDetay/id=id
+			console.log(vurl);
+
+            var vurl1 = "/Home/CategoriesDetay/" + id;
+            $.ajax({
+				method:"GET",
+				url:vurl1,
+				success:function(r){
+
+                   	$("#KatId").html(r.Id);
+					$("#KatAdi").html(r.Name);
+					$("#KatAciklama").html(r.Desc);
+				}
+            });
+		}
+
+		function OnResult(r){
+          
+            $("#kayitResult").addClass("alert").addClass("alert-sucess").html(r);
+
+		}
+
+	</script>
+}

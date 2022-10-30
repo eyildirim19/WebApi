@@ -94,8 +94,8 @@
 
 					var html = "<ul class='list-item-group'>";
 					$.each(r, function(index, item) {
-						console.log(item.name);
-						html += "<li class='list-group-item' style='cursor:pointer' onclick='OnGet(" + item.id + ")'>" + item.name + "</li>";
+						console.log(item.Name);
+						html += "<li class='list-group-item' style='cursor:pointer' onclick='OnGet(" + item.Id + ")'>" + item.Name + "</li>";
 					});
 					html += "</ul>";
 
@@ -110,9 +110,9 @@
 
 			// ajax metodu yerine get metodu ile'de kayıtları çağrılabilirsiniz. ajax metodu tavsiye edilir...
 			$.get(url, function(r) {
-				$("#KatId").html(r.id);
-				$("#KatAdi").html(r.name);
-				$("#KatAciklama").html(r.desc);
+				$("#KatId").html(r.Id);
+				$("#KatAdi").html(r.Name);
+				$("#KatAciklama").html(r.Desc);
 			});
 
 		}
@@ -131,8 +131,8 @@
 				desc = null;
 
 			var obj = {
-				name: katAdi,
-				desc: desc
+				Name: katAdi,
+				Desc: desc
 			};
 
 			console.log(obj);
